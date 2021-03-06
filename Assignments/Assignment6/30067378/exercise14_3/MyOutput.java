@@ -154,7 +154,7 @@ enum Months{
 
 class IPv4 implements FormattedOutput{
     final private String IP;
-    final static private String REGEX = "[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}";
+    final static private String REGEX = "[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}";
     final static private Pattern PATTERN = Pattern.compile(REGEX);
 
     public IPv4(String ip){
@@ -373,7 +373,7 @@ class ParseLine{
             IPV4 = new IPv4(matcher.group());
         }
         else{
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Error! Invalid Log Line!");
         }
 
         matcher = Pattern.compile(Location.getRegex()).matcher(line);
@@ -381,7 +381,7 @@ class ParseLine{
             LOCATION = new Location(matcher.group());
         }
         else{
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Error! Invalid Log Line!");
         }
 
         matcher = Pattern.compile(Action.getRegex()).matcher(line);
@@ -389,7 +389,7 @@ class ParseLine{
             ACTION = new Action(matcher.group());
         }
         else{
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Error! Invalid Log Line!");
         }
 
         matcher = Pattern.compile(DateTime.getRegex()).matcher(line);
@@ -397,7 +397,7 @@ class ParseLine{
             DATETIME = new DateTime(matcher.group());
         }
         else{
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Error! Invalid Log Line!");
         }
 
         matcher = Pattern.compile(Device.getRegex()).matcher(line);
@@ -405,7 +405,7 @@ class ParseLine{
             DEVICE = new Device(matcher.group());
         }
         else{
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Error! Invalid Log Line!");
         }
     }
     public IPv4 getIPv4() {
